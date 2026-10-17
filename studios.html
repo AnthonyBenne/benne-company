@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Benne Studios</title>
+<meta name="description" content="Benne Studios is the media company of BENNE. Interrupt culture.">
+<meta property="og:title" content="Benne Studios">
+<meta property="og:description" content="The media company of BENNE. Interrupt culture.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect x=%272%27 y=%272%27 width=%2712%27 height=%2712%27 rx=%271.5%27 fill=%27%232D3BDB%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Krona+One&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Schibsted+Grotesk:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Benne Studios: the BENNE white + ultramarine system, with the Studios deck's stacked outline/solid wide type and highlighted phrases. */
+:root{
+  --bg:#FFFFFF; --surface:#F3F4F2; --ink:#111413; --muted:#4A524E; --line:rgba(17,20,19,.12);
+  --accent:#2D3BDB; --accent-ink:#FFFFFF;
+  --art-ground:#E4E7E2; --art-stone:#CBCFC8; --art-paper:#FAFAF8; --art-shade:#7B827C; --art-light:#FFFFFF; --art-ink:#111413; --art-accent:#2D3BDB;
+  --f-wide:"Krona One","Bricolage Grotesque",system-ui,sans-serif;
+  --f-display:"Bricolage Grotesque","Schibsted Grotesk",system-ui,sans-serif;
+  --f-body:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.16,1,.3,1); --ease-ui:cubic-bezier(.4,0,.6,1);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--bg); color:var(--ink); font:1.0625rem/1.55 var(--f-body); -webkit-font-smoothing:antialiased; overflow-x:clip}
+p,h1,h2,h3{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+.wrap{max-width:1320px; margin-inline:auto; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
+@media (min-width:900px){ .wrap{padding-left:max(40px, env(safe-area-inset-left, 0px)); padding-right:max(40px, env(safe-area-inset-right, 0px))} }
+.label{font-family:var(--f-mono); font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:500}
+
+/* stacked outline + solid wide type, from the Studios deck */
+.stack{font-family:var(--f-wide); text-transform:uppercase; letter-spacing:.02em; line-height:.98; display:grid; gap:.06em}
+.stack span{display:block; white-space:nowrap}
+.stack .o{color:transparent; -webkit-text-stroke:1.2px var(--ink)}
+.stack .s{color:var(--ink)}
+
+/* header */
+.head{position:sticky; top:env(safe-area-inset-top, 0px); z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px)}
+.head .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:68px}
+.mark{display:inline-flex; align-items:center; gap:.55em; text-decoration:none; font-family:var(--f-wide); font-size:.95rem; letter-spacing:.04em; white-space:nowrap}
+.mark i{width:.6em; height:.6em; background:var(--accent); border-radius:1px}
+.back{font-size:.9rem; font-weight:500; color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:999px; transition:color .3s var(--ease-ui), background .3s var(--ease-ui)}
+.back:hover{color:var(--ink); background:rgba(45,59,219,.08)}
+
+/* hero */
+.hero{padding-block:clamp(36px,6vw,88px) clamp(56px,8vw,120px)}
+.hero-grid{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(28px,4vw,64px); align-items:center}
+.hero-copy{display:grid; gap:clamp(20px,2.4vw,32px); min-width:0}
+.hero .stack{font-size:clamp(2.1rem,6.4vw,6rem)}
+.hero .lead{font-size:clamp(1.1rem,1.5vw,1.3rem); color:var(--muted); max-width:38ch}
+.hero .lead b{color:var(--ink); font-weight:600}
+.art{position:relative; aspect-ratio:4/5; border-radius:8px; overflow:hidden; background:var(--art-ground); max-width:100%}
+.art canvas{position:absolute; inset:0; width:100%; height:100%; display:block}
+.art .tag{position:absolute; left:14px; top:14px; background:var(--bg); padding:7px 12px; border-radius:999px; font-size:.68rem; color:var(--ink)}
+@media (max-width:860px){ .hero-grid{grid-template-columns:1fr} .art{aspect-ratio:4/3} }
+
+/* statements */
+.st{padding-block:clamp(72px,10vw,140px); border-top:1px solid var(--line)}
+.st-grid{display:grid; grid-template-columns:minmax(0,4fr) minmax(0,8fr); gap:clamp(24px,5vw,80px); align-items:start}
+.st-grid.flip{grid-template-columns:minmax(0,8fr) minmax(0,4fr)}
+.st-grid.flip .side{order:2; text-align:right; justify-items:end}
+.side{display:grid; gap:14px; position:sticky; top:96px}
+.side .stack{font-size:clamp(1.3rem,2.4vw,2.3rem)}
+.big{font-family:var(--f-display); font-weight:700; font-size:clamp(1.6rem,3.3vw,3rem); letter-spacing:-.035em; line-height:1.12; text-wrap:pretty}
+.big + .big{margin-top:.6em}
+.hl{color:var(--accent-ink); background:linear-gradient(var(--accent),var(--accent)) 0 0/100% 100% no-repeat; padding:0 .18em; margin:0 -.04em; border-radius:2px; -webkit-box-decoration-break:clone; box-decoration-break:clone; transition:background-size .9s var(--ease), color .5s var(--ease-ui)}
+@media (max-width:860px){
+  .st-grid,.st-grid.flip{grid-template-columns:1fr}
+  .st-grid.flip .side{order:0; text-align:left; justify-items:start}
+  .side{position:static}
+}
+
+/* capabilities */
+.caps-sec{padding-block:clamp(72px,10vw,140px); border-top:1px solid var(--line)}
+.caps-head{display:flex; justify-content:space-between; align-items:end; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px,4vw,48px)}
+.caps-head h2{font-family:var(--f-display); font-weight:780; font-size:clamp(2.2rem,5vw,4.4rem); letter-spacing:-.05em; line-height:.95; max-width:14ch}
+.caps{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px 24px}
+.caps li{display:grid; gap:8px; align-content:start; padding-top:16px; position:relative; cursor:default; transition:opacity .35s var(--ease)}
+.caps li::before{content:""; position:absolute; top:0; left:0; width:22px; height:3px; border-radius:2px; background:var(--accent); transition:width .4s var(--ease)}
+.caps li.on::before{width:56px}
+.caps li.on b{color:var(--accent)}
+.caps.cycling li:not(.on){opacity:.55}
+.caps b{font-weight:600; font-size:1.05rem}
+.caps span{color:var(--muted); font-size:.95rem; line-height:1.45}
+@media (max-width:860px){ .caps{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:440px){ .caps{grid-template-columns:1fr} }
+
+/* closing */
+.close{padding-block:clamp(90px,13vw,190px); border-top:1px solid var(--line); text-align:center; display:grid; justify-items:center; gap:clamp(18px,2.4vw,30px)}
+.close .stack{font-size:clamp(1.7rem,6vw,5.6rem)}
+.close .stack.small{font-size:clamp(.85rem,1.6vw,1.4rem)}
+.close a{font-weight:600; color:var(--accent); text-decoration:none; background:linear-gradient(currentColor,currentColor) 0 100%/0% 1.5px no-repeat; padding-bottom:3px; transition:background-size .4s var(--ease)}
+.close a:hover{background-size:100% 1.5px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 24px; padding-block:28px calc(28px + env(safe-area-inset-bottom, 0px))}
+footer small{color:var(--muted); font-size:.85rem}
+
+/* motion */
+@media (prefers-reduced-motion: no-preference){
+  .rise{animation:rise 1s var(--ease) both}
+  .rise.d1{animation-delay:.08s} .rise.d2{animation-delay:.16s} .rise.d3{animation-delay:.3s}
+  @keyframes rise{from{opacity:0; transform:translateY(22px)}to{opacity:1; transform:none}}
+  .stack .o{animation:drift 1.2s var(--ease) both}
+  @keyframes drift{from{transform:translateX(-.6em); opacity:0}to{transform:none; opacity:1}}
+  .js .hl.pre{background-size:0% 100%; color:inherit}
+  .js .rv.pre{opacity:0; transform:translateY(24px)}
+  .rv{transition:opacity .8s var(--ease), transform .8s var(--ease); transition-delay:var(--d,0s)}
+}
+@media (prefers-reduced-motion: reduce){ *,*::before,*::after{animation:none!important; transition:none!important} html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<header class="head">
+  <div class="wrap">
+    <a class="mark" href="/studios" aria-label="Benne Studios"><i aria-hidden="true"></i>BENNE STUDIOS</a>
+    <a class="back" href="/">A Benne Company <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="label rise">Benne Studios · Media</p>
+        <h1 id="hero-title" class="stack rise d1" aria-label="Interrupt culture"><span class="o" aria-hidden="true">Interrupt</span><span class="s" aria-hidden="true">Culture</span></h1>
+        <p class="lead rise d2"><b>Benne Studios</b> is the media company of BENNE. We make work people stop for: films, content, and stories that start conversations.</p>
+      </div>
+      <div class="art rise d3" aria-hidden="true"><canvas data-art="media"></canvas><span class="tag label">Lens · Iris · Film</span></div>
+    </div>
+  </section>
+
+  <section class="st" aria-labelledby="st1">
+    <div class="wrap st-grid">
+      <div class="side rv"><p class="label">01 · What we do</p><div class="stack" aria-hidden="true"><span class="o">Media</span><span class="s">Media</span></div></div>
+      <div>
+        <h2 id="st1" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">What we do</h2>
+        <p class="big rv">We manage the <span class="hl">conversations that matter.</span> When it concerns you, it is always more than <span class="hl">just an ad.</span></p>
+        <p class="big rv">That is the job of the creative: meaningful talk, art with purpose. What <span class="hl">we initiate</span>, we design with your interest in mind. Your success is a <span class="hl">conversation</span> that never ends.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="st" aria-labelledby="st2">
+    <div class="wrap st-grid flip">
+      <div>
+        <h2 id="st2" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">How we work</h2>
+        <p class="big rv">Benne Studios is a hub of <span class="hl">vision and creativity.</span> We combine customer feedback with imaginative stories, and we <span class="hl">value ideas</span> from everyone: clients, our team, and the world around us.</p>
+        <p class="big rv">We build on what customers <span class="hl">actually want.</span> We do not assume. We do not guess. <span class="hl">We listen.</span> That is how we make work that is effective, original, and inspired by an <span class="hl">idea.</span></p>
+      </div>
+      <div class="side rv"><p class="label">02 · How we work</p><div class="stack" aria-hidden="true"><span class="o">We listen</span><span class="s">We listen</span></div></div>
+    </div>
+  </section>
+
+  <section class="st" aria-labelledby="st3">
+    <div class="wrap st-grid">
+      <div class="side rv"><p class="label">03 · Why it works</p><div class="stack" aria-hidden="true"><span class="o">Attention</span><span class="s">Attention</span></div></div>
+      <div>
+        <h2 id="st3" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Why it works</h2>
+        <p class="big rv">We are dedicated to <span class="hl">building brands.</span> We know the channels where your customers spend their time. We want their <span class="hl">attention</span>, so we go after it.</p>
+        <p class="big rv">Getting people to act is the key. Reaching more people is <span class="hl">good</span>, but getting them to talk back keeps you <span class="hl">relevant</span> and builds a relationship with your brand for <span class="hl">years to come.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="caps-sec" aria-labelledby="caps-title">
+    <div class="wrap">
+      <div class="caps-head">
+        <h2 id="caps-title">What Benne Studios makes.</h2>
+        <p class="label">Watch the lens respond</p>
+      </div>
+      <ul class="caps">
+        <li><b>Creative direction</b><span>A defined look, tone, and point of view, applied across every channel.</span></li>
+        <li><b>Film and content</b><span>Short films, campaign content, and social series from concept through edit.</span></li>
+        <li><b>Brand storytelling</b><span>The core narrative of a brand, written so people can repeat it.</span></li>
+        <li><b>Editorial systems</b><span>Formats, calendars, and templates that keep publishing on schedule.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="close" aria-label="Benne Studios">
+    <div class="stack" aria-hidden="true"><span class="o">Benne Studios</span><span class="s">Benne Studios</span></div>
+    <div class="stack small" aria-hidden="true"><span class="o">Interrupt culture</span><span class="s">Interrupt culture</span></div>
+    <a href="/">Part of BENNE COMPANY <span aria-hidden="true">→</span></a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><small>© 2026 Benne Studios · A BENNE COMPANY business</small><small>Benne Studios · Benne Apparel · Benne Holdings</small></div>
+</footer>
+
+<script>
+(() => {
+  document.documentElement.classList.add('js');
+  /* ---------- Art system ---------- */
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  let DPR = Math.min(2, window.devicePixelRatio || 1);
+  let P = {};
+  const hex = s => { s = s.replace('#','').trim(); if (s.length === 3) s = s.split('').map(c => c + c).join(''); const n = parseInt(s, 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
+  const rgb = (c, a = 1) => `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${a})`;
+  const mix = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+  const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+  const smooth = x => x * x * (3 - 2 * x);
+  const rng = seed => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+
+  function readPalette() {
+    const cs = getComputedStyle(document.documentElement);
+    const g = n => hex(cs.getPropertyValue(n) || '#888');
+    P = { ground: g('--art-ground'), stone: g('--art-stone'), paper: g('--art-paper'), shade: g('--art-shade'), light: g('--art-light'), ink: g('--art-ink'), accent: g('--art-accent') };
+    P.dark = (P.ground[0] + P.ground[1] + P.ground[2]) / 3 < 100;
+    P.sh = P.dark ? .6 : .26;
+  }
+
+  const noise = (() => {
+    const c = document.createElement('canvas'); c.width = c.height = 180;
+    const x = c.getContext('2d'); const d = x.createImageData(180, 180); const r = rng(7);
+    for (let i = 0; i < d.data.length; i += 4) { const v = r() * 255 | 0; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
+    x.putImageData(d, 0, 0); return c;
+  })();
+  function grain(ctx, w, h) {
+    ctx.save(); ctx.globalCompositeOperation = 'overlay'; ctx.globalAlpha = P.dark ? .16 : .13;
+    ctx.fillStyle = ctx.createPattern(noise, 'repeat'); ctx.fillRect(0, 0, w, h); ctx.restore();
+  }
+  function shadow(ctx, blur, dx, dy, a, fn) {
+    ctx.save(); ctx.shadowColor = `rgba(0,0,0,${a})`; ctx.shadowBlur = blur * DPR; ctx.shadowOffsetX = dx * DPR; ctx.shadowOffsetY = dy * DPR; fn(); ctx.restore();
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.min(r, w / 2, h / 2);
+    ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  function poly(ctx, pts) { ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.closePath(); }
+  function ground(ctx, w, h, k = .3) {
+    const g = ctx.createLinearGradient(0, 0, w * .4, h);
+    g.addColorStop(0, rgb(mix(P.ground, P.light, P.dark ? .04 : .3)));
+    g.addColorStop(1, rgb(mix(P.ground, P.shade, k)));
+    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+  }
+
+  /* shared: advance a per-canvas clock at a variable rate (so speed changes never jump) */
+  function adv(ptr, key, time, rate) {
+    if (!time) return 0;
+    const lt = ptr['_' + key]; const dt = lt ? Math.min(100, time - lt) : 0;
+    ptr['_' + key] = time; ptr[key] = (ptr[key] || 0) + dt / 1000 * rate; return ptr[key];
+  }
+
+  /* Benne Studios: a cinema lens with a working iris, and a strip of film running beneath it. */
+  function drawMedia(ctx, w, h, t, v, time, ptr) {
+    const S = Math.min(w, h), c = ptr.c || [0, 0, 0, 0], hero = v === 'hero';
+    ground(ctx, w, h, .35);
+    // film strip
+    const sh = S * (hero ? .3 : .24), sy = h * (hero ? .8 : .79);
+    const fw = sh * .92, gap = sh * .09, pitch = fw + gap;
+    const scroll = adv(ptr, 'film', time, S * (.08 + .5 * c[1])) + t * S * .6;
+    const filmC = mix(P.ink, P.shade, .18);
+    ctx.save(); ctx.translate(w / 2, sy); ctx.rotate(-.045);
+    shadow(ctx, S * .04, 0, S * .02, .3, () => { ctx.fillStyle = rgb(filmC); ctx.fillRect(-w, -sh / 2, w * 2, sh); });
+    const sp = sh * .17, so = -(scroll % sp);
+    ctx.fillStyle = rgb(P.ground, .92);
+    for (let x = -w + so; x < w; x += sp) { ctx.beginPath(); rrect(ctx, x, -sh / 2 + sh * .06, sh * .09, sh * .09, sh * .02); rrect(ctx, x, sh / 2 - sh * .15, sh * .09, sh * .09, sh * .02); ctx.fill(); }
+    const fo = -(scroll % pitch), base = Math.floor(scroll / pitch);
+    ctx.font = `500 ${Math.max(8, sh * .07)}px "Geist Mono", ui-monospace, monospace`;
+    for (let k = -Math.ceil(w / pitch) - 1; k < Math.ceil(w / pitch) + 1; k++) {
+      const x = k * pitch + fo, idx = base + k, fh = sh * .6, fy = -fh / 2;
+      const shot = ((idx % 5) + 5) % 5 === 2;
+      const ig = ctx.createLinearGradient(0, fy, 0, fy + fh);
+      if (shot) { ig.addColorStop(0, rgb(mix(P.accent, P.light, .35))); ig.addColorStop(1, rgb(mix(P.accent, [0, 0, 0], .3))); }
+      else { const r = rng(idx * 7 + 3); const tone = .25 + r() * .35; ig.addColorStop(0, rgb(mix(P.stone, P.light, tone))); ig.addColorStop(1, rgb(mix(P.stone, P.shade, .5 + r() * .3))); }
+      ctx.fillStyle = ig; ctx.fillRect(x, fy, fw, fh);
+      // a horizon and a subject in each frame, so it reads as footage
+      const r2 = rng(idx * 13 + 1);
+      ctx.fillStyle = rgb(P.light, .35); ctx.fillRect(x, fy + fh * (.45 + r2() * .2), fw, Math.max(1, fh * .03));
+      ctx.fillStyle = rgb(shot ? P.light : P.shade, shot ? .5 : .35); ctx.fillRect(x + fw * (.2 + r2() * .45), fy + fh * .35, fw * .14, fh * .4);
+      if (c[2] > .01) { ctx.fillStyle = rgb(P.light, c[2] * .55 * (.5 + .5 * Math.sin(idx * 1.3 - time / 350))); ctx.fillRect(x, fy, fw, fh); }
+      if (c[3] > .01) { ctx.fillStyle = rgb(P.light, .8 * c[3]); ctx.fillText(String(((idx % 100) + 100) % 100).padStart(2, '0') + ':00', x + 2, sh / 2 - sh * .19); }
+    }
+    ctx.restore();
+    // the lens
+    const R = S * (hero ? .27 : .25);
+    const cx = (hero ? w * .5 : w * .64) - ptr.x * S * .03, cy = (hero ? h * .37 : h * .4) - ptr.y * S * .02;
+    ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = 'rgba(0,0,0,.18)';
+    ctx.beginPath(); ctx.ellipse(cx + R * .18, cy + R * .22, R * 1.4, R * 1.4, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+    const metal = (r0, a, b) => { const g = ctx.createLinearGradient(cx - r0, cy - r0, cx + r0, cy + r0); g.addColorStop(0, rgb(mix(P.light, P.paper, .2))); g.addColorStop(.5, rgb(mix(P.stone, P.shade, a))); g.addColorStop(1, rgb(mix(P.shade, P.ink, b))); return g; };
+    const disc = (r0, fill) => { ctx.fillStyle = fill; ctx.beginPath(); ctx.arc(cx, cy, r0, 0, Math.PI * 2); ctx.fill(); };
+    shadow(ctx, S * .05, S * .01, S * .02, .3, () => disc(R * 1.4, metal(R * 1.4, .25, .2)));
+    disc(R * 1.33, rgb(mix(P.shade, P.ink, .55)));
+    // knurled grip
+    ctx.save(); ctx.translate(cx, cy); ctx.strokeStyle = rgb(P.light, .28); ctx.lineWidth = Math.max(1, R * .012);
+    for (let k = 0; k < 120; k++) { const a = k / 120 * Math.PI * 2; ctx.beginPath(); ctx.moveTo(Math.cos(a) * R * 1.2, Math.sin(a) * R * 1.2); ctx.lineTo(Math.cos(a) * R * 1.31, Math.sin(a) * R * 1.31); ctx.stroke(); }
+    ctx.restore();
+    disc(R * 1.19, metal(R * 1.19, .1, .05));
+    // focus scale with an ultramarine index mark
+    ctx.save(); ctx.translate(cx, cy); ctx.strokeStyle = rgb(P.ink, .55); ctx.lineWidth = 1;
+    for (let k = 0; k < 36; k++) { const a = k / 36 * Math.PI * 2 + adv(ptr, 'focus', time, .05 + .4 * c[0]), l = k % 3 ? .05 : .09; ctx.beginPath(); ctx.moveTo(Math.cos(a) * R * 1.16, Math.sin(a) * R * 1.16); ctx.lineTo(Math.cos(a) * R * (1.16 - l), Math.sin(a) * R * (1.16 - l)); ctx.stroke(); }
+    ctx.fillStyle = rgb(P.accent); ctx.beginPath(); ctx.moveTo(-R * .035, -R * 1.2); ctx.lineTo(R * .035, -R * 1.2); ctx.lineTo(0, -R * 1.1); ctx.closePath(); ctx.fill();
+    if (c[0] > .01) { ctx.strokeStyle = rgb(P.accent, c[0]); ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(0, 0, R * 1.19, 0, Math.PI * 2); ctx.stroke(); }
+    ctx.restore();
+    disc(R * 1.04, rgb(mix(P.ink, P.shade, .1)));
+    const gl = ctx.createRadialGradient(cx - R * .2, cy - R * .25, R * .1, cx, cy, R);
+    gl.addColorStop(0, rgb(mix(P.ink, P.shade, .35))); gl.addColorStop(1, rgb(P.ink));
+    disc(R, gl);
+    // iris: seven blades closing around an opening of light
+    const N = 7, open = (.34 + .16 * Math.sin(time / 2600)) * (1 - .5 * c[0]) + (time ? 0 : .1);
+    const a0 = R * open, rot = time / 9000 + open * 2;
+    const V = []; for (let k = 0; k < N; k++) { const a = rot + k / N * Math.PI * 2; V.push([cx + Math.cos(a) * a0, cy + Math.sin(a) * a0]); }
+    ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, R * .97, 0, Math.PI * 2); ctx.clip();
+    for (let k = 0; k < N; k++) {
+      const p0 = V[k], p1 = V[(k + 1) % N], pm = V[(k + N - 1) % N];
+      const d0 = [p0[0] - pm[0], p0[1] - pm[1]], L0 = Math.hypot(d0[0], d0[1]);
+      const d1 = [p1[0] - p0[0], p1[1] - p0[1]], L1 = Math.hypot(d1[0], d1[1]);
+      poly(ctx, [p0, [p0[0] + d0[0] / L0 * R * 2.2, p0[1] + d0[1] / L0 * R * 2.2], [p1[0] + d1[0] / L1 * R * 2.2, p1[1] + d1[1] / L1 * R * 2.2], p1]);
+      ctx.fillStyle = rgb(mix(P.ink, P.shade, k % 2 ? .16 : .26)); ctx.fill();
+      ctx.strokeStyle = rgb(P.light, .16); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(p0[0], p0[1]); ctx.lineTo(p0[0] + d0[0] / L0 * R * 2.2, p0[1] + d0[1] / L0 * R * 2.2); ctx.stroke();
+    }
+    const ap = ctx.createRadialGradient(cx, cy, 0, cx, cy, a0 * 1.1);
+    ap.addColorStop(0, rgb(mix(P.accent, P.light, .55))); ap.addColorStop(.6, rgb(P.accent)); ap.addColorStop(1, rgb(mix(P.accent, [0, 0, 0], .35)));
+    poly(ctx, V); ctx.fillStyle = ap; ctx.fill();
+    ctx.restore();
+    // glass reflections
+    ctx.save(); ctx.lineCap = 'round';
+    ctx.strokeStyle = rgb(P.light, .4); ctx.lineWidth = R * .045; ctx.beginPath(); ctx.arc(cx, cy, R * .82, Math.PI * 1.08, Math.PI * 1.42); ctx.stroke();
+    ctx.strokeStyle = rgb(P.light, .12); ctx.lineWidth = R * .02; ctx.beginPath(); ctx.arc(cx, cy, R * .6, Math.PI * 1.15, Math.PI * 1.7); ctx.stroke();
+    ctx.fillStyle = rgb(P.light, .55); ctx.beginPath(); ctx.arc(cx - R * .42, cy - R * .46, R * .06, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+    grain(ctx, w, h);
+  }
+
+  /* Benne Holdings: stacks of value on a ledger grid. They grow left to right, and a new piece keeps landing on the tallest. */
+  function hull(pts) {
+    pts = pts.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+    const lo = [], up = [];
+    for (const p of pts) { while (lo.length > 1 && cr(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); }
+    for (let i = pts.length - 1; i >= 0; i--) { const p = pts[i]; while (up.length > 1 && cr(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop(); up.push(p); }
+    up.pop(); lo.pop(); return lo.concat(up);
+  }
+  function drawCapital(ctx, w, h, t, v, time, ptr) {
+    const S = Math.min(w, h), c = ptr.c || [0, 0, 0, 0], hero = v === 'hero';
+    ground(ctx, w, h, .25);
+    const u = S * (hero ? .1 : .092);
+    const ox = (hero ? w * .2 : w * .3) + ptr.x * S * .02, oy = (hero ? h * .66 : h * .74) + ptr.y * S * .015;
+    const pr = (x, y, z) => [ox + (x - y) * .866 * u, oy + (x + y) * .5 * u - z * u];
+    // ledger grid
+    ctx.lineWidth = 1; ctx.strokeStyle = rgb(P.ink, .07);
+    for (let k = -14; k <= 14; k++) { let a = pr(k, -14, 0), b = pr(k, 14, 0); ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); a = pr(-14, k, 0); b = pr(14, k, 0); ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); }
+    const counts = [2, 3, 5, 7, 10].map(n => Math.round(n * (1 + .35 * c[3])));
+    const slabH = .3, gapBase = .06;
+    const stacks = counts.map((n, i) => ({ i, x: i * 1.45 - 1.2, y: -i * .55 + .6, w: 1, d: 1, n }));
+    // the holding boundary around everything
+    ctx.save(); ctx.setLineDash([6, 5]); ctx.strokeStyle = rgb(P.ink, .35); ctx.lineWidth = 1.2;
+    poly(ctx, [pr(-1.8, -2.4, 0), pr(5.6, -2.4, 0), pr(5.6, 1.9, 0), pr(-1.8, 1.9, 0)]); ctx.stroke(); ctx.restore();
+    const sd = [Math.cos(.55 + t * .5), Math.sin(.55 + t * .5)];
+    const height = s => s.n * (slabH + (s.i === 3 ? gapBase * (1 - c[2]) : gapBase));
+    // shadows
+    ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = 'rgba(0,0,0,.16)';
+    stacks.forEach(s => { const H = height(s), dx = sd[0] * H * .7, dy = sd[1] * H * .7; const b = [[s.x, s.y], [s.x + s.w, s.y], [s.x + s.w, s.y + s.d], [s.x, s.y + s.d]]; poly(ctx, hull(b.concat(b.map(p => [p[0] + dx, p[1] + dy])).map(p => pr(p[0], p[1], 0)))); ctx.fill(); });
+    ctx.restore();
+    const box = (X, Y, W, D, Z, H, base, alpha = 1) => {
+      ctx.save(); ctx.globalAlpha = alpha;
+      poly(ctx, [pr(X + W, Y, Z), pr(X + W, Y + D, Z), pr(X + W, Y + D, Z + H), pr(X + W, Y, Z + H)]); ctx.fillStyle = rgb(mix(base, P.shade, .3)); ctx.fill();
+      poly(ctx, [pr(X, Y + D, Z), pr(X + W, Y + D, Z), pr(X + W, Y + D, Z + H), pr(X, Y + D, Z + H)]); ctx.fillStyle = rgb(mix(base, P.shade, .48)); ctx.fill();
+      poly(ctx, [pr(X, Y, Z + H), pr(X + W, Y, Z + H), pr(X + W, Y + D, Z + H), pr(X, Y + D, Z + H)]); ctx.fillStyle = rgb(mix(base, P.light, .5)); ctx.fill();
+      ctx.strokeStyle = rgb(P.light, .6); ctx.lineWidth = 1; const e1 = pr(X + W, Y + D, Z), e2 = pr(X + W, Y + D, Z + H); ctx.beginPath(); ctx.moveTo(e1[0], e1[1]); ctx.lineTo(e2[0], e2[1]); ctx.stroke();
+      ctx.restore();
+    };
+    const hop = time ? Math.floor(time / 700) % stacks.length : -1;
+    stacks.forEach(s => {
+      const gap = s.i === 3 ? gapBase * (1 - c[2]) : gapBase;
+      for (let k = 0; k < s.n; k++) {
+        let base = k % 2 ? P.stone : P.paper;
+        if (k === s.n - 1 && s.i === hop && c[0] > .01) base = mix(base, P.accent, c[0]);
+        box(s.x, s.y, s.w, s.d, k * (slabH + gap), slabH, base);
+      }
+      if (c[1] > .01) { ctx.save(); ctx.globalAlpha = c[1]; ctx.setLineDash([5, 4]); ctx.strokeStyle = rgb(P.accent); ctx.lineWidth = 1.5; poly(ctx, [pr(s.x - .18, s.y - .18, 0), pr(s.x + s.w + .18, s.y - .18, 0), pr(s.x + s.w + .18, s.y + s.d + .18, 0), pr(s.x - .18, s.y + s.d + .18, 0)]); ctx.stroke(); ctx.restore(); }
+      // real estate strategy: one stack becomes a building
+      if (s.i === 3 && c[2] > .01) {
+        const H = height(s); ctx.save(); ctx.globalAlpha = c[2];
+        ctx.strokeStyle = rgb(P.ink, .25); ctx.lineWidth = 1;
+        for (let z = .4; z < H - .1; z += .4) for (let q = .2; q < s.w; q += .3) { const a = pr(s.x + q, s.y + s.d, z), b = pr(s.x + q + .14, s.y + s.d, z), b2 = pr(s.x + q + .14, s.y + s.d, z + .22), a2 = pr(s.x + q, s.y + s.d, z + .22); poly(ctx, [a, b, b2, a2]); ctx.stroke(); }
+        ctx.fillStyle = rgb(P.accent); poly(ctx, [pr(s.x + .4, s.y + s.d, 0), pr(s.x + .62, s.y + s.d, 0), pr(s.x + .62, s.y + s.d, .5), pr(s.x + .4, s.y + s.d, .5)]); ctx.fill();
+        ctx.restore();
+      }
+    });
+    // compounding: a new ultramarine piece lands on the tallest stack
+    const last = stacks[stacks.length - 1], top = height(last);
+    const P0 = 3600, f = time ? (time % P0) / P0 : .7;
+    const z = top + (1 - smooth(clamp(f / .5))) * 3.2;
+    const alpha = time ? clamp(f / .12) * (1 - clamp((f - .9) / .1)) : 1;
+    box(last.x, last.y, last.w, last.d, z, slabH, P.accent, alpha);
+    grain(ctx, w, h);
+  }
+
+  /* Benne Apparel: a hoodie on a hanger, on a garment rail, with an ultramarine hang tag. */
+  const WEAVE = (() => { const c = document.createElement('canvas'); c.width = c.height = 8; const x = c.getContext('2d'); x.fillStyle = 'rgba(0,0,0,.22)'; for (let i = 0; i < 8; i += 2) { x.fillRect(i, 0, 1, 8); x.fillRect(0, i + 1, 8, 1); } return c; })();
+  function hoodiePath(ctx, G) {
+    const p = (x, y) => [x * G, y * G];
+    ctx.beginPath();
+    ctx.moveTo(...p(-.1, 0)); ctx.quadraticCurveTo(...p(0, .1), ...p(.1, 0));
+    ctx.lineTo(...p(.31, .06)); ctx.quadraticCurveTo(...p(.37, .07), ...p(.375, .13));
+    ctx.lineTo(...p(.44, .66)); ctx.lineTo(...p(.34, .7)); ctx.lineTo(...p(.29, .27)); ctx.lineTo(...p(.295, .93));
+    ctx.lineTo(...p(-.295, .93)); ctx.lineTo(...p(-.29, .27)); ctx.lineTo(...p(-.34, .7)); ctx.lineTo(...p(-.44, .66));
+    ctx.lineTo(...p(-.375, .13)); ctx.quadraticCurveTo(...p(-.37, .07), ...p(-.31, .06)); ctx.closePath();
+  }
+  function teePath(ctx, G) {
+    const p = (x, y) => [x * G, y * G];
+    ctx.beginPath(); ctx.moveTo(...p(-.1, 0)); ctx.quadraticCurveTo(...p(0, .07), ...p(.1, 0));
+    ctx.lineTo(...p(.3, .05)); ctx.lineTo(...p(.46, .24)); ctx.lineTo(...p(.37, .32)); ctx.lineTo(...p(.29, .25)); ctx.lineTo(...p(.29, .9));
+    ctx.lineTo(...p(-.29, .9)); ctx.lineTo(...p(-.29, .25)); ctx.lineTo(...p(-.37, .32)); ctx.lineTo(...p(-.46, .24)); ctx.lineTo(...p(-.3, .05)); ctx.closePath();
+  }
+  function hook(ctx, G, railRel) {
+    ctx.save(); ctx.strokeStyle = rgb(mix(P.shade, P.ink, .3)); ctx.lineWidth = Math.max(2, G * .012); ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(0, -G * .02); ctx.lineTo(0, railRel + G * .03); ctx.arc(G * .022, railRel + G * .03, G * .022, Math.PI, Math.PI * 1.9); ctx.stroke(); ctx.restore();
+  }
+  function drawApparel(ctx, w, h, t, v, time, ptr) {
+    const S = Math.min(w, h), c = ptr.c || [0, 0, 0, 0], hero = v === 'hero';
+    ground(ctx, w, h, .3);
+    const rail = h * (hero ? .14 : .12);
+    const G = hero ? Math.min(w * .92, h * .78) : Math.min(w * .5, h * .78);
+    const gx = hero ? w * .5 : w * .4, gy = rail + G * .22;
+    // rail
+    const rg = ctx.createLinearGradient(0, rail - S * .014, 0, rail + S * .014);
+    rg.addColorStop(0, rgb(P.light)); rg.addColorStop(.45, rgb(mix(P.stone, P.shade, .4))); rg.addColorStop(.6, rgb(P.light)); rg.addColorStop(1, rgb(P.shade));
+    // second garment on the rail, partly out of frame
+    const tx = gx + G * (.78 - .12 * c[2]), tG = G * .94;
+    ctx.save(); ctx.translate(tx, rail + tG * .2); ctx.rotate(Math.sin(time / 2100 + 1) * .01);
+    hook(ctx, tG, -tG * .2);
+    shadow(ctx, G * .04, G * .02, G * .03, .2, () => { teePath(ctx, tG); const tg = ctx.createLinearGradient(-tG * .4, 0, tG * .4, 0); tg.addColorStop(0, rgb(mix(P.stone, P.shade, .25))); tg.addColorStop(1, rgb(mix(P.stone, P.shade, .5))); ctx.fillStyle = tg; ctx.fill(); });
+    ctx.restore();
+    // main hoodie
+    const sway = Math.sin(time / 1700) * .012 + ptr.x * .025;
+    ctx.save(); ctx.translate(gx, rail); ctx.rotate(sway); ctx.translate(0, gy - rail);
+    const railRel = rail - gy;
+    // hood falls behind the shoulders
+    ctx.beginPath(); ctx.moveTo(-G * .17, G * .03); ctx.bezierCurveTo(-G * .22, -G * .2, G * .22, -G * .2, G * .17, G * .03); ctx.closePath();
+    ctx.fillStyle = rgb(mix(P.paper, P.shade, .35)); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(-G * .12, G * .02); ctx.bezierCurveTo(-G * .14, -G * .12, G * .14, -G * .12, G * .12, G * .02); ctx.closePath();
+    ctx.fillStyle = rgb(mix(P.paper, P.shade, .55)); ctx.fill();
+    hook(ctx, G, railRel);
+    shadow(ctx, G * .05, G * .03, G * .04, .22, () => {
+      hoodiePath(ctx, G);
+      const bg = ctx.createLinearGradient(-G * .45, 0, G * .45, G * .3); bg.addColorStop(0, rgb(mix(P.paper, P.light, .5))); bg.addColorStop(.55, rgb(P.paper)); bg.addColorStop(1, rgb(mix(P.paper, P.shade, .3)));
+      ctx.fillStyle = bg; ctx.fill();
+    });
+    ctx.save(); hoodiePath(ctx, G); ctx.clip();
+    // weave, closer when materials are in focus
+    ctx.save(); ctx.globalAlpha = .08 + .4 * c[1]; ctx.globalCompositeOperation = 'multiply'; const pat = ctx.createPattern(WEAVE, 'repeat'); const sc = 1 + 1.6 * c[1]; if (pat.setTransform) pat.setTransform(new DOMMatrix([sc, 0, 0, sc, 0, 0])); ctx.fillStyle = pat; ctx.fillRect(-G, -G, G * 2, G * 2); ctx.restore();
+    // soft folds and sleeve shadows
+    ctx.lineCap = 'round';
+    const fold = (x1, y1, x2, y2, x3, y3, a, lw) => { ctx.strokeStyle = rgb([0, 0, 0], a); ctx.lineWidth = G * lw; ctx.beginPath(); ctx.moveTo(x1 * G, y1 * G); ctx.quadraticCurveTo(x2 * G, y2 * G, x3 * G, y3 * G); ctx.stroke(); };
+    fold(.29, .27, .3, .5, .31, .7, .07, .03); fold(-.29, .27, -.3, .5, -.31, .7, .05, .03);
+    fold(.08, .32, .12, .55, .1, .84, .035, .05); fold(-.12, .3, -.1, .6, -.14, .85, .03, .05);
+    fold(.33, .2, .38, .4, .4, .62, .05, .02);
+    ctx.restore();
+    // ribbed hem and cuffs
+    ctx.strokeStyle = rgb(P.shade, .3); ctx.lineWidth = 1;
+    for (let x = -.29; x <= .29; x += .014) { ctx.beginPath(); ctx.moveTo(x * G, .865 * G); ctx.lineTo(x * G, .925 * G); ctx.stroke(); }
+    ctx.beginPath(); ctx.moveTo(-.295 * G, .86 * G); ctx.lineTo(.295 * G, .86 * G); ctx.stroke();
+    [[.34, .7, .44, .66], [-.34, .7, -.44, .66]].forEach(q => { ctx.beginPath(); ctx.moveTo(q[0] * G, (q[1] - .06) * G); ctx.lineTo(q[2] * G, (q[3] - .06) * G); ctx.stroke(); });
+    // kangaroo pocket
+    ctx.save(); ctx.setLineDash([G * .012, G * .008]); ctx.strokeStyle = rgb(P.shade, .5);
+    ctx.beginPath(); ctx.moveTo(-.17 * G, .58 * G); ctx.lineTo(.17 * G, .58 * G); ctx.lineTo(.22 * G, .82 * G); ctx.moveTo(-.17 * G, .58 * G); ctx.lineTo(-.22 * G, .82 * G); ctx.stroke(); ctx.restore();
+    // drawstrings
+    ctx.lineWidth = Math.max(1.5, G * .008); ctx.strokeStyle = rgb(mix(P.paper, P.shade, .3));
+    [[-.045, -.06, .3], [.045, .06, .27]].forEach(d => { ctx.beginPath(); ctx.moveTo(d[0] * G, .05 * G); ctx.quadraticCurveTo(d[1] * G, .2 * G, d[0] * 1.2 * G, d[2] * G); ctx.stroke(); ctx.fillStyle = rgb(c[3] > .01 ? mix(P.shade, P.accent, c[3]) : P.shade); ctx.fillRect(d[0] * 1.2 * G - G * .008, d[2] * G, G * .016, G * .035); });
+    // brand mark on the chest
+    if (c[3] > .01) { ctx.save(); ctx.globalAlpha = c[3]; ctx.fillStyle = rgb(P.accent); ctx.fillRect(.12 * G, .2 * G, .05 * G, .05 * G); ctx.fillRect(.18 * G, .215 * G, .07 * G, .012 * G); ctx.restore(); }
+    // pattern lines when design is in focus
+    if (c[0] > .01) { ctx.save(); ctx.globalAlpha = c[0]; ctx.setLineDash([6, 5]); ctx.strokeStyle = rgb(P.accent); ctx.lineWidth = 1.5; ctx.save(); ctx.translate(0, .46 * G); ctx.scale(1.06, 1.05); ctx.translate(0, -.46 * G); hoodiePath(ctx, G); ctx.stroke(); ctx.restore(); ctx.setLineDash([]); ctx.beginPath(); ctx.moveTo(0, .2 * G); ctx.lineTo(0, .78 * G); ctx.moveTo(-.02 * G, .24 * G); ctx.lineTo(0, .2 * G); ctx.lineTo(.02 * G, .24 * G); ctx.moveTo(-.02 * G, .74 * G); ctx.lineTo(0, .78 * G); ctx.lineTo(.02 * G, .74 * G); ctx.stroke(); ctx.restore(); }
+    // hang tag from the right cuff
+    const tagA = Math.sin(time / 900) * (.08 + .22 * c[2]) + ptr.x * .1, tw = G * (.1 + .02 * c[2]), th = tw * 1.55;
+    ctx.save(); ctx.translate(.39 * G, .69 * G); ctx.rotate(tagA);
+    ctx.strokeStyle = rgb(P.ink, .55); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, G * .08); ctx.stroke(); ctx.translate(0, G * .08);
+    shadow(ctx, G * .03, G * .01, G * .015, .3, () => { const tg = ctx.createLinearGradient(-tw / 2, 0, tw / 2, th); tg.addColorStop(0, rgb(mix(P.accent, P.light, .15))); tg.addColorStop(1, rgb(mix(P.accent, [0, 0, 0], .3))); ctx.fillStyle = tg; ctx.beginPath(); ctx.moveTo(-tw * .3, 0); ctx.lineTo(tw * .3, 0); ctx.lineTo(tw / 2, tw * .25); ctx.lineTo(tw / 2, th); ctx.lineTo(-tw / 2, th); ctx.lineTo(-tw / 2, tw * .25); ctx.closePath(); ctx.fill(); });
+    ctx.fillStyle = rgb(P.ground); ctx.beginPath(); ctx.arc(0, tw * .18, tw * .07, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = rgb(P.light, .85); ctx.fillRect(-tw * .3, th * .5, tw * .6, Math.max(1, th * .03)); ctx.fillRect(-tw * .3, th * .6, tw * .4, Math.max(1, th * .03));
+    ctx.restore();
+    ctx.restore();
+    // rail drawn last so hooks sit on it
+    shadow(ctx, S * .02, 0, S * .01, .25, () => { ctx.fillStyle = rg; ctx.fillRect(0, rail - S * .012, w, S * .024); });
+    grain(ctx, w, h);
+  }
+
+  /* AI & Automation: loose material tiles that settle into an ordered grid, connected by one routed line with work moving along it. */
+  function drawSystems(ctx, w, h, t, v, time, ptr) {
+    const S = Math.min(w, h);
+    ground(ctx, w, h, .3);
+    const cell = S * (v === 'hero' ? .24 : .15);
+    const cols = Math.ceil(w / cell) + 1, rows = Math.ceil(h / cell) + 1;
+    const offX = -cell * .35, offY = (h - rows * cell) / 2;
+    const r = rng(42);
+    const c = ptr.c || [0, 0, 0, 0];
+    const shift = (t - .5) * .5 + ptr.x * .12 + Math.sin(time / 6000) * .06 + c[3] * .9;
+    const tiles = [];
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const p = i / Math.max(1, cols - 1);
+      const a = smooth(clamp(p * 1.6 - .25 + shift));
+      const rr = r(), r2 = r(), r3 = r();
+      tiles.push({ i, j, a, cx: offX + (i + .5) * cell + (r2 - .5) * cell * .45 * (1 - a), cy: offY + (j + .5) * cell + (r3 - .5) * cell * .45 * (1 - a), rot: (rr - .5) * 1.1 * (1 - a), s: cell * (.6 + .12 * a) });
+    }
+    // route through the ordered side
+    const midRow = Math.floor(rows / 2);
+    const startCol = Math.max(1, Math.floor(cols * .38));
+    const ctr = (i, j) => [offX + (i + .5) * cell, offY + (j + .5) * cell];
+    const route = [ctr(startCol, midRow - 1), ctr(Math.floor((startCol + cols) / 2), midRow - 1), ctr(Math.floor((startCol + cols) / 2), midRow), ctr(cols + 1, midRow)];
+    const onRoute = new Set();
+    for (let k = 0; k < route.length - 1; k++) {
+      const a = route[k], b = route[k + 1];
+      const n = Math.round(Math.hypot(b[0] - a[0], b[1] - a[1]) / cell);
+      for (let q = 0; q <= n; q++) { const x = a[0] + (b[0] - a[0]) * q / Math.max(1, n), y = a[1] + (b[1] - a[1]) * q / Math.max(1, n); onRoute.add(Math.round((x - offX) / cell - .5) + ',' + Math.round((y - offY) / cell - .5)); }
+    }
+    // connectors between settled neighbours
+    ctx.strokeStyle = rgb(P.ink, P.dark ? .14 : .12); ctx.lineWidth = Math.max(1, cell * .02);
+    tiles.forEach(tl => {
+      if (tl.a < .92) return;
+      const right = tiles.find(o => o.j === tl.j && o.i === tl.i + 1);
+      if (right && right.a > .92) { ctx.beginPath(); ctx.moveTo(tl.cx + tl.s / 2, tl.cy); ctx.lineTo(right.cx - right.s / 2, right.cy); ctx.stroke(); }
+    });
+    // tiles
+    tiles.forEach(tl => {
+      const base = mix(P.stone, P.paper, tl.a);
+      ctx.save(); ctx.translate(tl.cx, tl.cy); ctx.rotate(tl.rot);
+      shadow(ctx, cell * .14, cell * .05, cell * .07, P.sh * (.7 + .3 * (1 - tl.a)), () => {
+        const g = ctx.createLinearGradient(-tl.s / 2, -tl.s / 2, tl.s / 2, tl.s / 2);
+        g.addColorStop(0, rgb(mix(base, P.light, P.dark ? .08 : .4))); g.addColorStop(1, rgb(mix(base, P.shade, .22)));
+        ctx.fillStyle = g; ctx.beginPath(); rrect(ctx, -tl.s / 2, -tl.s / 2, tl.s, tl.s, tl.s * (.08 + .1 * tl.a)); ctx.fill();
+      });
+      // a pressed inner field on settled tiles
+      if (tl.a > .6) {
+        const k = tl.s * .5;
+        ctx.fillStyle = rgb(P.shade, P.dark ? .3 : .1); ctx.beginPath(); rrect(ctx, -k / 2, -k / 2, k, k, k * .14); ctx.fill();
+        ctx.fillStyle = rgb(P.light, P.dark ? .06 : .45); ctx.fillRect(-k / 2, k / 2 - 1, k, 1);
+      }
+      if (c[1] > .01 && tl.a > .6 && [-1, 0, 1].some(d => onRoute.has(tl.i + ',' + (tl.j + d)))) {
+        const k = tl.s * .5; ctx.fillStyle = rgb(P.accent, .22 * c[1]); ctx.beginPath(); rrect(ctx, -k / 2, -k / 2, k, k, k * .14); ctx.fill();
+      }
+      if (onRoute.has(tl.i + ',' + tl.j) && tl.a > .85) {
+        const k = tl.s * .22; ctx.fillStyle = rgb(P.accent); ctx.beginPath(); rrect(ctx, -k / 2, -k / 2, k, k, k * .2); ctx.fill();
+      }
+      ctx.restore();
+    });
+    // the route
+    ctx.save(); ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.strokeStyle = rgb(P.accent); ctx.lineWidth = Math.max(2, cell * (.05 + .06 * c[0]));
+    ctx.beginPath(); route.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke();
+    // start node
+    ctx.fillStyle = rgb(P.accent); ctx.beginPath(); ctx.arc(route[0][0], route[0][1], cell * .07, 0, Math.PI * 2); ctx.fill();
+    // packets moving along the route
+    const segs = []; let total = 0;
+    for (let k = 0; k < route.length - 1; k++) { const l = Math.hypot(route[k + 1][0] - route[k][0], route[k + 1][1] - route[k][1]); segs.push(l); total += l; }
+    const at = d => { d = ((d % total) + total) % total; for (let k = 0; k < segs.length; k++) { if (d <= segs[k]) { const f = d / segs[k]; return [route[k][0] + (route[k + 1][0] - route[k][0]) * f, route[k][1] + (route[k + 1][1] - route[k][1]) * f]; } d -= segs[k]; } return route[route.length - 1]; };
+    const spacing = cell * 1.25, speed = cell * .55;
+    const dt = ptr.lt ? Math.min(100, time - ptr.lt) : 0; ptr.lt = time; ptr.ph = (ptr.ph || 0) + dt / 1000 * speed * (1 + 4 * c[2]);
+    const phase = time ? ptr.ph : 0;
+    const pk = cell * .26;
+    const doc = (x, y, r, s, done) => {
+      ctx.save(); ctx.translate(x, y); ctx.rotate(r); const dw = s, dh = s * 1.25;
+      shadow(ctx, cell * .06, cell * .02, cell * .03, P.sh, () => { ctx.fillStyle = rgb(P.paper); ctx.beginPath(); rrect(ctx, -dw / 2, -dh / 2, dw, dh, dw * .08); ctx.fill(); });
+      ctx.strokeStyle = rgb(P.accent); ctx.lineWidth = Math.max(1, cell * .012); ctx.beginPath(); rrect(ctx, -dw / 2, -dh / 2, dw, dh, dw * .08); ctx.stroke();
+      ctx.fillStyle = rgb(P.shade, .5); for (let k = 0; k < 3; k++) ctx.fillRect(-dw * .3, -dh * .25 + k * dh * .18, dw * (k === 2 ? .35 : .6), Math.max(1, dh * .05));
+      if (done) { ctx.strokeStyle = rgb(P.accent); ctx.lineWidth = Math.max(1.5, cell * .02); ctx.beginPath(); ctx.moveTo(dw * .05, dh * .3); ctx.lineTo(dw * .15, dh * .4); ctx.lineTo(dw * .35, dh * .18); ctx.stroke(); }
+      ctx.restore();
+    };
+    // inbox: unsorted documents waiting at the start of the route
+    [[-.9, -.5, -.3], [-.7, -.25, .25], [-1.05, -.15, .1]].forEach(q => doc(route[0][0] + q[0] * cell, route[0][1] + q[1] * cell, q[2], pk, false));
+    for (let d = phase % spacing; d < total; d += spacing) {
+      const p = at(d);
+      doc(p[0], p[1], 0, pk, d / total > .55);
+    }
+    ctx.restore();
+    grain(ctx, w, h);
+  }
+
+
+  readPalette();
+
+  // one lens, driven by scroll, pointer and the four capabilities
+  const cv = document.querySelector('canvas[data-art]'), ctx = cv.getContext('2d'), host = cv.parentElement;
+  const ptr = { x: 0, y: 0, c: [0, 0, 0, 0] }, pt = { x: 0, y: 0 }; let ct = [0, 0, 0, 0], vis = true;
+  host.addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; const r = host.getBoundingClientRect(); pt.x = ((e.clientX - r.left) / r.width - .5) * 2; pt.y = ((e.clientY - r.top) / r.height - .5) * 2; });
+  host.addEventListener('pointerleave', () => { pt.x = 0; pt.y = 0; });
+  new IntersectionObserver(es => es.forEach(e => vis = e.isIntersecting)).observe(cv);
+  const lis = [...document.querySelectorAll('.caps li')], caps = document.querySelector('.caps');
+  let cur = -1, held = false, timer = null;
+  const set = i => { cur = i; lis.forEach((li, k) => li.classList.toggle('on', k === i)); ct = [0, 1, 2, 3].map(k => k === i ? 1 : 0); };
+  lis.forEach((li, k) => { li.addEventListener('pointerenter', () => { if (reduce.matches) return; held = true; set(k); }); li.addEventListener('pointerleave', () => held = false); });
+  new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting && !reduce.matches && !timer) { caps.classList.add('cycling'); if (cur < 0) set(0); timer = setInterval(() => { if (!held) set((cur + 1) % lis.length); }, 2800); }
+    else if (!e.isIntersecting) { clearInterval(timer); timer = null; }
+  }), { threshold: .3 }).observe(caps);
+
+  let w = 0, h = 0;
+  const size = () => { const r = cv.getBoundingClientRect(); w = r.width; h = r.height; cv.width = Math.round(w * DPR); cv.height = Math.round(h * DPR); };
+  new ResizeObserver(size).observe(cv); size();
+  (function frame(now) {
+    if (vis && w) {
+      ptr.x += (pt.x - ptr.x) * .08; ptr.y += (pt.y - ptr.y) * .08;
+      for (let q = 0; q < 4; q++) ptr.c[q] += (ct[q] - ptr.c[q]) * .07;
+      const r = cv.getBoundingClientRect(), t = reduce.matches ? .5 : clamp((innerHeight - r.top) / (innerHeight + r.height));
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, w, h);
+      drawMedia(ctx, w, h, t, h > w * 1.08 ? 'hero' : 'feature', reduce.matches ? 0 : now, reduce.matches ? { x: 0, y: 0, c: [0, 0, 0, 0] } : ptr);
+    }
+    requestAnimationFrame(frame);
+  })(performance.now());
+
+  // highlights sweep in and statements rise as they arrive
+  if (!reduce.matches && 'IntersectionObserver' in window) {
+    const vh = innerHeight;
+    const els = [...document.querySelectorAll('.rv, .hl')];
+    document.querySelectorAll('.big').forEach(p => p.querySelectorAll('.hl').forEach((s, i) => s.style.transitionDelay = (.25 + i * .18) + 's'));
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
+    els.forEach(el => { if (el.getBoundingClientRect().top > vh * .9) { el.classList.add('pre'); io.observe(el); } });
+  }
+})();
+</script>
+</body>
+</html>
